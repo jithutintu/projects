@@ -72,7 +72,7 @@
 				<tr>
 				 <td class="col-lg-3 col-offset-3 col-sm-3 col-sm-offset-3">
 				<input type="submit" class="btn btn-success ">
-				<a href="index"class="btn btn-danger">Cancel</a>
+				<a href="home"class="btn btn-danger">Cancel</a>
 				</td>
 				</tr>
 				

@@ -1,12 +1,7 @@
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 
-<%@include file="/WEB-INF/views/common-header.jsp"%>
-
-
-
-<aside class="col-lg-3 col-sm-4" style="width: 0.333333%;">
-	<%@include file="/WEB-INF/views/sidebar.jsp"%>
-</aside>
 <article class="col-lg-8 col-lg-offset-1 col-sm-7 col-sm-offset-1">
 
 	<c:choose>
@@ -14,20 +9,12 @@
 			test="${not empty isMyCartClicked || not empty isAddToCartClicked }">
 			<%@include file="/WEB-INF/views/myCart.jsp"%>
 		</c:when>
-		<c:when
-			test="${not empty isProductClicked && empty isLoggedInUser}">
-			<h1>you have to login first</h1>
-		<h1>${username}</h1>
-		</c:when>
+		
 		<c:when
 			test="${not empty isProductClicked && not empty isLoggedInUser}">
 			<%@include file="/WEB-INF/views/productDetails.jsp"%>
 		</c:when>
 		 
-		<c:when test="${not empty onLinePaymentClicked}">
-			<%@include file="/WEB-INF/views/creditCard.jsp"%>
-
-		</c:when>
 		
 		<c:when test="${not empty cashOnDeliveryClicked}">
 			<%@include file="/WEB-INF/views/shippingAddress.jsp"%>

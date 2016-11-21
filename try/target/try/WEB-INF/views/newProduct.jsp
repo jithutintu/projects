@@ -8,9 +8,7 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <h2>NewProduct</h2>
 
-<c:url var="addAction" value="newProduct"></c:url>
-
-	<form:form action="${addAction}" commandName="product" enctype="multipart/form-data">
+<form:form action="newProduct" method="post" enctype="multipart/form-data" >
 	<table align="center" class="col-lg-8 col-lg-offset-1 col-sm-7 col-sm-offset-1">
 		
 		
@@ -64,7 +62,7 @@
 			<td><input class="form-control" type="text" name="product_Price" required="true"></td>
 		</tr>
 	<td>File to upload:</td> 
-				<td><input type="file" name="itemImage"></td>
+				<td><input type="file" name="ItemImage"></td>
 					
 		<tr>
 			<td colspan="2" align="center">

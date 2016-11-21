@@ -2,18 +2,13 @@ package com.niit.HomeControl;
 
 import java.util.List;
 
-import javax.servlet.http.HttpSession;
-import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -38,12 +33,14 @@ public class HomeController {
 	private CategoryDao categoryDao;
 	@Autowired
 	private ProductDao productDao;
+	@SuppressWarnings("unused")
 	@Autowired
 	private Category category;
+	@SuppressWarnings("unused")
 	@Autowired
 	private Product product;
 	
-	
+
 @RequestMapping(value="/")
 public ModelAndView showindex(Model mod)
 {
@@ -51,25 +48,24 @@ public ModelAndView showindex(Model mod)
 	ModelAndView mv=new ModelAndView("/index");
 	List<Category> CategoryList = categoryDao.list();
 	List<Product> List = productDao.list(); 
+	
 	mv.addObject("productList",List);
 	mv.addObject("categoryList",CategoryList);
 	return mv;
-
-		
+	
+}
+@RequestMapping(value="/home")
+public String showHome(Model mod)
+{
+	mod.addAttribute("ch","true");
+	return "index";
 }
 @RequestMapping(value="/managepage")
 public ModelAndView showadminmanage(Model mod){
 ModelAndView mv=new ModelAndView("admin");
 return mv;
 
-}
-@RequestMapping(value="/home")
-public String showHome(Model mod)
-{
-	mod.addAttribute("ch","true");
-	return "home";
-}
-	
+}	
 		@RequestMapping("/registeruser")
     public String registerUser(Model model) {
 
@@ -130,10 +126,12 @@ userDao.saveorupdate(user);
    
     @RequestMapping("/Loginpage")
 
-    public String Login()
-    {
+    public ModelAndView Login()
+    {	
+    	ModelAndView mv = new ModelAndView("index");
     	
-    return "login";
+    	mv.addObject("loginclicked","true");
+    return mv;
 
     }
     

@@ -1,3 +1,5 @@
+
+<%@include file="/WEB-INF/views/common-header.jsp"%>
 <h2 align="center" style="margin-top: 0em; margin-bottom: -2em;">${product.product_Name}</h2>
 
 
@@ -7,7 +9,7 @@
 <table>
 <tr>
 <td>
-<img src="<c:url value="/images/products/${product.product_Id}.png"/>" alt="${product.product_Id}" width="200" height="200">
+<img src="<c:url value="/images/${product.product_Id}.jpg"/>" alt="${product.product_Id}" width="200" height="200">
 </td>
 <tr><td>Product Name : ${product.product_Name}</td><br></tr>
 <tr><td>Product Description : ${product.description}</td><br></tr>

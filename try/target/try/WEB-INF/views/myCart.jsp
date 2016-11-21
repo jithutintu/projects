@@ -17,7 +17,7 @@ function goBack() {
 </head>
 
 
-<%@include file="/WEB-INF/views/common-header.jsp" %>
+
 <body>
 
 <div style="margin-left: 200px;">
@@ -56,15 +56,15 @@ function goBack() {
 
 <button  onclick="goBack()">Go Back</button>
 
-<a href="../Proceed/${username}"><button type="button" name="button" class="btn btn-success"> Place Order </button></a>
+<a href="../Proceed/${usernames}"><button type="button" name="button" class="btn btn-success"> Place Order </button></a>
 
 <div class="dropdown" style="margin-left: 8em;">
     <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Proceed<span class="caret"></span></button>
     <ul class="dropdown-menu">
-      <li><a href="../onLinePayment/${username}">On Line Payment</a></li>
+      <li><a href="../onLinePayment/${usernames}">On Line Payment</a></li>
     
       <li class="divider"></li>
-      <li><a href="../cashOnDelivery/${username}">Cash On Delivery</a></li>
+      <li><a href="../cashOnDelivery/${usernames}">Cash On Delivery</a></li>
     </ul>
   </div>
   

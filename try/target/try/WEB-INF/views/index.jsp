@@ -136,7 +136,6 @@ footer {
 			</div>
 		</div>
 	</div>
-
 	<footer class="container-fluid text-center">
 		<p>
 		<h2>Thank you for visiting My cart</h2>

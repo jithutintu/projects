@@ -1,40 +1,50 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
- <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
-</head>
-<body>
-<div class="span9" >
-<form:form action="aftersuccess" method="post" >
-RegisteredSuccessfully
 
 
-<c:if test="${isSignupClicked}">
-		<c:set var="s" scope="application" value="12" />
-	</c:if>
-	
- 	<c:if test="${s eq 12}">
-<div class="alert alert-success  col-xs-3 col-xs-offset-3">
-  <strong>${isSignupClicked}</strong> 
+<%@include file="/WEB-INF/views/common-header.jsp"%>
+
+
+
+<aside class="col-lg-3 col-sm-4" style="width: 0.333333%;">
+	<%@include file="/WEB-INF/views/sidebar.jsp"%>
+</aside>
+<article class="col-lg-8 col-lg-offset-1 col-sm-7 col-sm-offset-1">
+
+	<c:choose>
+		<c:when
+			test="${not empty isMyCartClicked || not empty isAddToCartClicked }">
+			<%@include file="/WEB-INF/views/myCart.jsp"%>
+		</c:when>
+		<c:when
+			test="${not empty isProductClicked && empty isLoggedInUser}">
+			<h1>you have to login first</h1>
+		<h1>${username}</h1>
+		</c:when>
+		<c:when
+			test="${not empty isProductClicked && not empty isLoggedInUser}">
+			<%@include file="/WEB-INF/views/productDetails.jsp"%>
+		</c:when>
+		 
+		<c:when test="${not empty onLinePaymentClicked}">
+			<%@include file="/WEB-INF/views/creditCard.jsp"%>
+
+		</c:when>
+		
+		<c:when test="${not empty cashOnDeliveryClicked}">
+			<%@include file="/WEB-INF/views/shippingAddress.jsp"%>
+		</c:when>
+
+		<c:when test="${not empty ProductDelivered}">
+			<%@include file="/WEB-INF/views/delivery.jsp"%>
+		</c:when>
+		
+		<c:when test="${not empty isPlaceOrderClicked}">
+			<%@include file="/WEB-INF/views/deliverWhere.jsp"%>
+		</c:when>
+		
+		<c:otherwise>
+			<%@include file="/WEB-INF/views/listedItem.jsp"%> 
+		</c:otherwise>
  
-</div>
- </c:if></div>
-<div class="span5">
-
-             <div class="col-lg-5  col-sm-4 ">
-			<div class="text-center"><h3 class="text-danger">Click Here To... <a href="aftersuccess" class="btn btn-warning" role="button"> continue  shopping </a>
-				
-				
-				</div>	
-</div>
-</form:form>
-</body>
-</html>
+	</c:choose>
+ 
+</article>

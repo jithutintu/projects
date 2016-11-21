@@ -27,12 +27,9 @@
 	<c:if test="${adminhello}">
 		<c:set var="s" scope="application" value="1" />
 	</c:if>
+	
 
-	<c:if test="${ch1}">
-		<c:set var="s" scope="application" value="0" />
-	</c:if>
-
-	<c:if test="${adminlogcheck}">
+	<c:if test="${isLoggedInUser}">
 		<c:set var="s" scope="application" value="2" />
 </c:if>
 	<nav class="navbar navbar-inverse">
@@ -59,18 +56,18 @@
 				
 				<c:if test="${s eq 2}">
 				
-					<li><a href="myCart/${username}"><span class="glyphicon glyphicon-shopping-cart ">
+					<li><a href="myCart/{email}"><span class="glyphicon glyphicon-shopping-cart ">
 					</span>MyCart(${numberOfProduct})</a></li>
 				</c:if>
 				
 				<c:if test="${s eq 2}">
-			<li><a style = "color:white">Welcome ${emails }</a></li>
+			<li><a style = "color:white">Welcome ${username }</a></li>
 						<li style="display: inline-block"><a href="logout"><span
 								class="glyphicon glyphicon-log-in"></span> LogOut</a></li>
 				</c:if>
 				
 					<c:if test="${s eq 1}">
-						<li>  <a style = "color:white"  >Welcome ${username }</a></li>
+						<li>  <a style = "color:white"  >Welcome ${Adminname }</a></li>
 					</c:if>
 					
 					<c:if test="${s eq 1}">

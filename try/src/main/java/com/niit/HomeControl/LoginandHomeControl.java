@@ -1,23 +1,13 @@
 package com.niit.HomeControl;
 
-import java.security.Principal;
-import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.authentication.AnonymousAuthenticationToken;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.ui.ModelMap;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.niit.backend.DAO.CartDao;
@@ -33,6 +23,7 @@ import com.niit.backend.model.User;
 
 
 @Controller
+
 public class LoginandHomeControl {
 	
 	@Autowired
@@ -60,6 +51,7 @@ public class LoginandHomeControl {
 	@Autowired
 	private User user;
 	
+	@SuppressWarnings("unused")
 	@Autowired
 	private Cart cart;
 	@Autowired
@@ -85,6 +77,7 @@ public class LoginandHomeControl {
 		user = userDao.isvalidUser(email, password);
 		if( user == null){
 			mod.addAttribute("login", "true");
+			
 			mv.addObject("errormessage","Pls Enter Valid Email & Password ");
 		
 			
@@ -92,7 +85,8 @@ public class LoginandHomeControl {
 		}else{
 			if (user.getRole().equals("ROLE_ADMIN")){
 			 mv = new ModelAndView("admin");
-			 mod.addAttribute("adminhello","true");
+			 mod.addAttribute("adminhello",true);
+			// mod.addAttribute("loginclicked","true");
 			    session.setAttribute("Adminname", user.getName());
 				session.setAttribute("categoryList", categoryDao.list());
 				session.setAttribute("supplierList", supplierDao.list());
@@ -103,17 +97,18 @@ public class LoginandHomeControl {
 				session.setAttribute("supplier", supplier);
 				
 			}else if(user.getRole().equals("ROLE_USER")){
-		 mv = new ModelAndView("listedItem");
-		 mv.addObject("isLoggedInUser", true);
+		        mv = new ModelAndView("listedItem");
+		        mod.addAttribute("isLoggedInUser", "true");	
+		      //  session.setAttribute("cartList", cartDao.list(password));
+		        session.setAttribute("productList", productDao.list());
 				session.setAttribute("username",user.getName());
 				session.setAttribute("email", user.getEmail());
-
 
 			}
 		}
 		
 		return mv;
-	
+
 }
 	
 	/*
@@ -132,17 +127,20 @@ public class LoginandHomeControl {
 	 @RequestMapping("/aftersuccess")
 	 public String aftersuccess(Model mod){
 		 mod.addAttribute("ch1","true");
-		 return "home";
+		 return "login";
 	 }
 		    
 	@RequestMapping("/logout")
-	public ModelAndView logout(HttpServletRequest request){
+	public ModelAndView logout(HttpServletRequest request,Model mod){
+		 mod.addAttribute("ch","true");
+		 mod.addAttribute("isLoggedInUser","true");
+		
 		ModelAndView mv = new ModelAndView("/login");
-		//session.invalidate();
+		session.invalidate();
 		session = request.getSession(true);
 		session.setAttribute("category",category);
 		session.setAttribute("categoryList",categoryDao.list());
-		
+		session.setAttribute("productList", productDao.list());
 		mv.addObject("errormessage1", "successfully LoggedOut");
 		mv.addObject("logout","true");
 		

@@ -6,18 +6,14 @@ import java.nio.file.Paths;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.stereotype.Repository;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -59,11 +55,7 @@ public class ProductController {
 		productDao.saveOrUpdate(product);
 		MultipartFile itemImage = product.getItemImage();
 	       String rootDirectory = request.getSession().getServletContext().getRealPath("/");
-path = Paths.get(rootDirectory + "\\WEB-INF\\images\\products\\"+product.getProduct_Id()+".png");
-//path = Paths.get("E:\\workspace2\\ShoppingCartFrontEnd\\src\\main\\webapp\\WEB-INF\\resources\\images"+product.getId()+".png");
-	        
-
-
+path = Paths.get(rootDirectory + "\\WEB-INF\\images\\"+product.getProduct_Id()+".jpg");
 	        if (itemImage != null && !itemImage.isEmpty()) {
 	            try {
 	            itemImage.transferTo(new File(path.toString()));
@@ -72,32 +64,10 @@ path = Paths.get(rootDirectory + "\\WEB-INF\\images\\products\\"+product.getProd
 	                throw new RuntimeException("item image saving failed.", e);
 	            }
 	        }
-
-
 	return "admin";
 
 }
-	
-	
-	
-
-	
-	
-	
-	
-	
-/*
-	@RequestMapping(value = "/newProduct", method=RequestMethod.POST)
-	public ModelAndView newProduct( @ModelAttribute ("Product") Product product, @RequestParam("file") MultipartFile file  ) {
-	productDao.saveOrUpdate(product);
-	
-	String path = "C://Users/jithu/workspace/try/src/main/webapp/WEB-INF/images/";
-	
-	//FileUtil.upload(path, file, product.getProduct_Id()+".jpg");
-	
-	  return new ModelAndView("admin");
-	 }
-	*/
+		
 	@RequestMapping("/viewProducts")
 	public ModelAndView viewProducts() {
 

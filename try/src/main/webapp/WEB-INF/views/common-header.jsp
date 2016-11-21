@@ -1,5 +1,6 @@
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <html>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
@@ -22,6 +23,7 @@
 <body>
 	<c:if test="${ch}">
 		<c:set var="s" scope="application" value="0" />
+		
 	</c:if>
 
 	<c:if test="${adminhello}">
@@ -56,12 +58,14 @@
 				
 				<c:if test="${s eq 2}">
 				
-					<li><a href="myCart/{email}"><span class="glyphicon glyphicon-shopping-cart ">
+					<li><a href="myCart"><span class="glyphicon glyphicon-shopping-cart ">
 					</span>MyCart(${numberOfProduct})</a></li>
 				</c:if>
 				
 				<c:if test="${s eq 2}">
 			<li><a style = "color:white">Welcome ${username }</a></li>
+			</c:if>
+			         <c:if test="${s eq 2}">
 						<li style="display: inline-block"><a href="logout"><span
 								class="glyphicon glyphicon-log-in"></span> LogOut</a></li>
 				</c:if>
@@ -80,7 +84,6 @@
 					
 					
 					<c:if test="${s eq 0}">
-					
 					
 						<li><a href="Loginpage"><span
 								class="glyphicon glyphicon-log-in"></span> Login</a></li>

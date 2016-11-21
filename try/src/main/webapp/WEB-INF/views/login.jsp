@@ -52,7 +52,7 @@
 -->
 			<tr>
 				<td class="col-xs-5 "><b>UserName:</b></td>
-				<td><input class="form-control" type="text" name="email" placeholder="Enter YouR Email Id"></td>
+				<td><input class="form-control" type="text" required="true" name="email" placeholder="Enter YouR Email Id"></td>
 			</tr>
 		
 			
@@ -61,13 +61,13 @@
 <br>
 			<tr>
 				<td class="col-xs-5 "><b>Password:</b></td>
-				<td> <input class="form-control" type="password" name="password" placeholder="Enter password"/></td>
+				<td> <input class="form-control" type="password" name="password" required="true" placeholder="Enter password"/></td>
 			</tr>
 			 
 					</table>
 			<table>
 			<tr>
-				<td class="col-lg-3 col-offset-3 col-sm-3 col-sm-offset-3"><a href="register">New User?</a></td>
+				<td class="col-lg-3 col-offset-3 col-sm-3 col-sm-offset-3"><a href="registeruser">New User?</a></td>
 				</tr>
 				<tr>
 				 <td class="col-lg-3 col-offset-3 col-sm-3 col-sm-offset-3">

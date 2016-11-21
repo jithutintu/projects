@@ -23,6 +23,7 @@
 		<th align="left">Category</th>
 		<th align="left">Edit</th>
 		<th align="left">Delete</th>
+		<th align="left">Image</th>
 	</tr>
 	 <c:forEach items="${productList}" var="product" varStatus="status"> 
 		<td align="left">${status.count}</td>
@@ -35,6 +36,7 @@
 			<td align="left">${product.category}</td>
 			<td align="left"><a href="editProduct/${product.product_Id}">Edit</a></td>
 			<td align="left"><a href="deleteProduct/${product.product_Id}" onclick="return confirm('Are You Sure? Do you Want Delete Product : ${product.product_Name} ?')">Delete</a></td>
+			<td><img src="<c:url value="/images/products/${product.product_Id}.png" /> "alt="image" width="40" height="30"/> </td>
 		</tr>
 	 </c:forEach>
 </table>

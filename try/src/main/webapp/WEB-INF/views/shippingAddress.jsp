@@ -15,7 +15,7 @@
 				<td>User Name :</td>			
 				<td><input class="form-control" type="text" name="name" id="user" value="${User.username}"/>
 			</tr>
-			
+		
 			<tr>
 				<td>Phone Number :</td>				
 				<td><input class="form-control" type="text" name="phoneNo" id="ph" value="${User.phoneNo}"/>

@@ -35,6 +35,7 @@
 		<tr>
 			<td>Stock:</td>
 			<td><input class="form-control" type="text" name="product_Stock" value="${Product.product_Stock}"></td>
+			
 		</tr>
 		<tr>
 			<td colspan="2" align="center"><input class="btn btn-success" type="submit" value="Add">

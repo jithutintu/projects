@@ -1,3 +1,5 @@
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -15,7 +17,10 @@
 <%@include file="/WEB-INF/views/common-header.jsp" %>
 	<style>
 	
-	
+	<c:if test="${loginclicked}">
+		<c:set var="s" scope="application" value="22" />
+		
+	</c:if>
 /* Remove the navbar's default margin-bottom and rounded borders */
 .navbar {
 	margin-bottom: 0;
@@ -24,28 +29,28 @@
 
 /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
 .row.content {
-	height: 450px
+	height: 250px
 }
 
 /* Set gray background color and 100% height */
 .sidenav {
-	padding-top: 20px;
-	background-color: #f1f1f1;
+	padding-top: 05px;
+	background-color: lavender;
 	height: 100%;
 }
 
 /* Set black background color, white text and some padding */
 footer {
-	background-color: #555;
+	background-color: lavender;
 	color: white;
-	padding: 15px;
+	padding: 500px;
 }
 
 /* On small screens, set height to 'auto' for sidenav and grid */
 @media screen and (max-width: 767px) {
 	.sidenav {
 		height: auto;
-		padding: 15px;
+		padding: 30px;
 	}
 	.row.content {
 		height: auto;
@@ -54,7 +59,6 @@ footer {
 </style>
 </head>
 <body>
-
 	<div class="container-fluid text-center">
 		<div class="row content">
 			<div class="col-sm-2 sidenav">
@@ -68,7 +72,7 @@ footer {
 					<a href="#">Offer Zone</a>
 				</p>
 			</div>
-			<div class="col-sm-8 text-left">
+			<div class="col-sm-6 text-left">
 				<body style="""lavender">
 					<center>
 						<h1>Welcome To My Cart</h1>
@@ -119,28 +123,30 @@ footer {
 						
 					</div>
 					
+					
 					<center>
 							<h4>BigBrand Big Collection</h4>
 						</center>
 					<marquee>
 						<h4>Flat 50% offer on Mens wear</h4>
 					</marquee>
-			</div>
-			<div class="col-sm-2 sidenav">
-				<div class="well">
 					
-				</div>
-				<div class="well">
-					<p>ADS</p>
+			</div>
+			<div class="col-sm-3 sidenav">
+				
+			
+			<c:if test="${s eq 22}">
+					<%@include file="/WEB-INF/views/login.jsp" %>
+					</c:if>
+	
 				</div>
 			</div>
+			
+				
 		</div>
+		
 	</div>
-	<footer class="container-fluid text-center">
-		<p>
-		<h2>Thank you for visiting My cart</h2>
-		</p>
-	</footer>
+	
 	</style>
 </body>
 
